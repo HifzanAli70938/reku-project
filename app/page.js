@@ -1,5 +1,5 @@
 import Navbar from './components/navbar/Navbar'
-import Hero from './components/sections/hero/Hero'
+import Hero from './components/sections/Hero/Hero'
 import TrustedPartners from './components/sections/TrustedPartners/TrustedPartners'
 import CommunitySection from './components/sections/community'
 import WhySection from './components/sections/why'
