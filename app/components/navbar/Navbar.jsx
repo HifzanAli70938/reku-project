@@ -116,7 +116,7 @@ const Navbar = () => {
           >
             {/* Sidebar Content */}
             <div 
-              className={`absolute inset-y-0 right-0 w-full sm:w-[400px] bg-white/20 shadow-2xl transition-all duration-300 transform backdrop-blur-xl border-l border-white/20 ${
+              className={`absolute inset-y-0 right-0 w-full sm:w-[400px] bg-[#130D1B]/95 shadow-2xl transition-all duration-300 transform backdrop-blur-xl border-l border-white/10 ${
                 isSidebarOpen ? 'translate-x-0' : 'translate-x-full'
               }`}
               onClick={(e) => e.stopPropagation()}
@@ -135,27 +135,27 @@ const Navbar = () => {
               <div className="flex flex-col gap-4 sm:gap-6 pt-24 sm:pt-28 px-4 sm:px-8">
                 <button 
                   onClick={() => scrollToSection('hero')}
-                  className="text-left text-white/90 hover:text-white transition-all duration-300 py-4 px-6 rounded-xl hover:bg-white/10 backdrop-blur-sm border border-white/10"
+                  className="text-left text-white hover:text-white transition-all duration-300 py-4 px-6 rounded-xl hover:bg-purple-500/20 backdrop-blur-sm border border-white/10"
                 >
                   Home
                 </button>
                 <button 
                   onClick={() => scrollToSection('community')}
-                  className="text-left text-white/90 hover:text-white transition-all duration-300 py-4 px-6 rounded-xl hover:bg-white/10 backdrop-blur-sm border border-white/10 flex items-center justify-between"
+                  className="text-left text-white hover:text-white transition-all duration-300 py-4 px-6 rounded-xl hover:bg-purple-500/20 backdrop-blur-sm border border-white/10 flex items-center justify-between"
                 >
                   Community Forum
                   <IoChevronDown className="text-xl" />
                 </button>
                 <button 
                   onClick={() => scrollToSection('why')}
-                  className="text-left text-white/90 hover:text-white transition-all duration-300 py-4 px-6 rounded-xl hover:bg-white/10 backdrop-blur-sm border border-white/10 flex items-center justify-between"
+                  className="text-left text-white hover:text-white transition-all duration-300 py-4 px-6 rounded-xl hover:bg-purple-500/20 backdrop-blur-sm border border-white/10 flex items-center justify-between"
                 >
                   Education Center
                   <IoChevronDown className="text-xl" />
                 </button>
                 <button 
                   onClick={() => scrollToSection('contact')}
-                  className="text-left text-white/90 hover:text-white transition-all duration-300 py-4 px-6 rounded-xl hover:bg-white/10 backdrop-blur-sm border border-white/10"
+                  className="text-left text-white hover:text-white transition-all duration-300 py-4 px-6 rounded-xl hover:bg-purple-500/20 backdrop-blur-sm border border-white/10"
                 >
                   Contact Us
                 </button>
