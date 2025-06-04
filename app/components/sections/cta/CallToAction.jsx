@@ -1,12 +1,10 @@
 'use client'
-import StripeBackground from '@/app/components/common/StripeBackground'
 import Button from '@/app/components/common/Button'
 import ScrollReveal from '@/app/components/common/ScrollReveal'
 
 const CallToAction = () => {
   return (
-    <section className="relative bg-[#130D1B] py-20">
-      <StripeBackground />
+    <section className="relative bg-gradient-to-br from-[#0f0f1e] via-[#1a1a2f] to-[#2a1f47] py-20">
       <div className="relative z-10 container mx-auto px-5 max-w-7xl">
         <ScrollReveal direction="up" delay={0.2}>
           <div className="bg-gradient-to-br from-purple-500/20 via-indigo-600/15 to-pink-500/20 backdrop-blur-xl rounded-3xl p-12 border border-white/10 hover:border-white/20 transition-all duration-300 shadow-[0_8px_32px_0_rgba(167,139,250,0.3)]">

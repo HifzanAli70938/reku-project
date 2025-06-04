@@ -1,12 +1,10 @@
 'use client'
 import Image from 'next/image';
-import StripeBackground from '../../common/StripeBackground';
 import ScrollReveal from '@/app/components/common/ScrollReveal';
 
 const WhySection = () => {
   return (
     <section className="bg-[#130D1B] relative py-12 sm:py-16 md:py-20" id="why">
-      <StripeBackground />
       <div className="container mx-auto px-4 relative z-10">
         {/* Top Content */}
         <div className="flex flex-col lg:flex-row justify-between items-start mb-8 sm:mb-12 lg:mb-16 gap-6 lg:gap-8">

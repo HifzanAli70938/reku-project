@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { IoChevronBack, IoChevronForward } from 'react-icons/io5';
-import StripeBackground from '@/app/components/common/StripeBackground'
+
 import ScrollReveal from '@/app/components/common/ScrollReveal';
 import Image from 'next/image';
 
@@ -63,8 +63,8 @@ const BlogSection = () => {
   const visibleBlogs = blogData.slice(currentIndex, currentIndex + 3);
 
   return (
-    <div className="relative bg-[#130D1B] py-12 sm:py-16 px-4">
-      <StripeBackground />
+    <div className="relative bg-gradient-to-br from-[#0f0f1e] via-[#1a1a2f] to-[#2a1f47] py-12 sm:py-16 px-4">
+  
       {/* Header Section */}
       <ScrollReveal direction="down" delay={0.2}>
         <div className="text-center mb-8 sm:mb-12">

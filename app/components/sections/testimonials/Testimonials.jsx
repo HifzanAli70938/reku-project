@@ -1,243 +1,262 @@
-'use client'
-import { useState } from 'react'
-import Image from 'next/image'
-import StripeBackground from '@/app/components/common/StripeBackground'
-import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'
-import { IoChevronBack, IoChevronForward } from 'react-icons/io5'
-import { FaStar } from 'react-icons/fa'
-import ScrollReveal from '@/app/components/common/ScrollReveal'
+'use client';
+import { useState } from 'react';
+import Image from 'next/image';
+import { FaQuoteRight, FaStar } from 'react-icons/fa';
+import { HiChevronLeft, HiChevronRight } from 'react-icons/hi2';
 
-const testimonialData = [
+const testimonials = [
   {
-    review: "I've been trading for years, but joining this community has taken my skills to another level. The signals are incredibly accurate!",
-    rating: 5,
-    name: "Sarah Johnson",
-    profession: "Forex Trader",
-    image: "/assets/client1.png"
+    id: 1,
+    text: 'This is a fantastic platform! The level of expertise and dedication shown by the team is unmatched. No fake signals, .',
+    name: 'CHLOE B.',
+    role: 'Amateur Trader',
+    image: '/assets/client1.png',
   },
   {
-    review: "The mentorship program here is outstanding. My portfolio has grown significantly since I started following their strategies.",
-    rating: 5,
-    name: "Michael Chen",
-    profession: "Crypto Investor",
-    image: "/assets/client2.png"
+    id: 2,
+    text: 'The education here completely changed the game for me. The comprehensive courses and real-time market analysis have given me the confidence to make informed trading decisions. .',
+    name: 'SAMANTHA T.',
+    role: 'Beginner Trader',
+    image: '/assets/client2.png',
   },
   {
-    review: "Best trading community I've ever been part of. The support and knowledge sharing is incredible.",
-    rating: 5,
-    name: "Emma Davis",
-    profession: "Day Trader",
-    image: "/assets/client3.png"
+    id: 3,
+    text: 'Its the only place I trust for signals. The accuracy and timing of their trade calls are remarkable. My win rate has never been better, ',
+    name: 'DAVID M.',
+    role: 'Swing Trader',
+    image: '/assets/client3.png',
   },
   {
-    review: "Their algorithmic tools have revolutionized my trading approach. Highly recommended!",
-    rating: 5,
-    name: "James Wilson",
-    profession: "Algo Trader",
-    image: "/assets/client4.png"
+    id: 4,
+    text: 'The analysis and support are absolutely top-notch. What sets them apart is their commitment to education and transparency. Every trade call comes with detailed analysis and risk management strategies.',
+    name: 'PRISANA V.',
+    role: 'Investor',
+    image: '/assets/client4.png',
   },
   {
-    review: "The educational resources and real-time support have been invaluable for my trading journey.",
-    rating: 5,
-    name: "Lisa Anderson",
-    profession: "Stock Trader",
-    image: "/assets/client5.png"
+    id: 5,
+    text: 'The copy trades are not just profitable but completely transparent. I appreciate how they explain every trade setup and the reasoning behind each decision.',
+    name: 'ARJUN K.',
+    role: 'Full-Time Trader',
+    image: '/assets/client5.png',
   },
   {
-    review: "Incredible community with top-notch analysis and trading strategies.",
-    rating: 5,
-    name: "David Thompson",
-    profession: "Investment Analyst",
-    image: "/assets/client6.png"
+    id: 6,
+    text: 'This platform is a true game-changer for anyone new to trading. The step-by-step guidance, risk management tools, and supportive community have helped me avoid common ',
+    name: 'LISA W.',
+    role: 'Beginner',
+    image: '/assets/client6.png',
   },
   {
-    review: "The signal accuracy and community support have exceeded my expectations.",
-    rating: 5,
-    name: "Rachel Martinez",
-    profession: "Options Trader",
-    image: "/assets/client7.png"
+    id: 7,
+    text: 'Finally found a platform that delivers on its promises. The combination of expert analysis, educational resources, and real-time support has dramatically improved my trading performance. ',
+    name: 'TOMMY G.',
+    role: 'Scalper',
+    image: '/assets/client7.png',
   },
   {
-    review: "Best investment I've made for my trading career. The insights are priceless.",
-    rating: 5,
-    name: "Kevin Zhang",
-    profession: "Portfolio Manager",
-    image: "/assets/client8.png"
+    id: 8,
+    text: 'Clear, actionable signals every day! The technical analysis provided is thorough and easy to understand. Their market insights have helped me spot opportunities I would have missed otherwise.',
+    name: 'MAYA D.',
+    role: 'Technical Analyst',
+    image: '/assets/client8.png',
   },
   {
-    review: "The technical analysis and market insights have transformed my trading approach.",
-    rating: 5,
-    name: "Sophie Turner",
-    profession: "Technical Analyst",
-    image: "/assets/client9.png"
+    id: 9,
+    text: 'The support team is absolutely incredible - 10/10! They go above and beyond to ensure every member succeeds. Whether youre stuck with a trade or need help with strategy',
+    name: 'JORDAN P.',
+    role: 'Beginner',
+    image: '/assets/client9.png',
   },
   {
-    review: "Outstanding platform for both beginners and experienced traders.",
-    rating: 5,
-    name: "Alex Parker",
-    profession: "Futures Trader",
-    image: "/assets/client10.png"
-  }
-]
+    id: 10,
+    text: 'Perfect platform for long-term growth. Their focus on sustainable trading strategies and risk management has helped me build a stable trading portfolio.',
+    name: 'FIONA L.',
+    role: 'Investor',
+    image: '/assets/client10.png',
+  },
+];
 
 const Testimonials = () => {
-  const [currentIndex, setCurrentIndex] = useState(1)
+  const [centerIndex, setCenterIndex] = useState(2); // start with 3rd testimonial centered
 
-  const nextTestimonial = () => {
-    setCurrentIndex((prev) => (prev + 1) % testimonialData.length)
-  }
+  const visibleCards = 5; // Show exactly 5 cards
+  const half = Math.floor(visibleCards / 2);
 
-  const prevTestimonial = () => {
-    setCurrentIndex((prev) => (prev - 1 + testimonialData.length) % testimonialData.length)
-  }
+  const handleNext = () => {
+    setCenterIndex((prev) => (prev + 1) % testimonials.length);
+  };
 
-  const getVisibleTestimonials = () => {
-    const prev = (currentIndex - 1 + testimonialData.length) % testimonialData.length
-    const next = (currentIndex + 1) % testimonialData.length
-    return [prev, currentIndex, next]
-  }
+  const handlePrev = () => {
+    setCenterIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+  };
 
   return (
-    <section className="relative bg-[#130D1B] py-12 sm:py-16">
-      <StripeBackground />
-      <div className="container mx-auto px-4 relative z-10">
+    <section className="w-full bg-gradient-to-br from-[#0f0f1e] via-[#1a1a2f] to-[#2a1f47] text-white">
+   
+      
+      <div className="w-full px-4 relative z-10">
         {/* Header content */}
-        <div className="flex flex-col lg:flex-row justify-between items-center mb-8 sm:mb-12">
-          <ScrollReveal direction="left" delay={0.2}>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl text-white mb-4 lg:mb-0">
-              JOIN A GLOBAL TRADING <br/>AND CRYPTO COMMUNITY
-            </h2>
-          </ScrollReveal>
+        <div className="flex flex-col lg:flex-row justify-between items-start max-w-[1400px] mx-auto p-16">
+          <h2 className="text-3xl font-riosark text-[72px] sm:text-4xl lg:text-5xl text-white mb-4 lg:mb-0 lg:max-w-2xl">
+            JOIN A GLOBAL TRADING <br/>AND CRYPTO COMMUNITY
+          </h2>
           
-          <ScrollReveal direction="right" delay={0.4}>
-            <div className="w-full lg:max-w-md">
-              <p className="text-white/70 mb-4 text-center lg:text-left">
-                Join thousands of satisfied traders who have transformed their trading journey with our community
-              </p>
-              <div className="flex justify-center lg:justify-start">
-                <button className="px-6 sm:px-8 py-2 sm:py-3 bg-gradient-to-r from-[#A84BC2] to-[#6C3ECB] rounded-full text-white transition-all hover:from-[#A84BC2]/90 hover:to-[#6C3ECB]/90 backdrop-blur-sm border border-white/10 shadow-[0_4px_12px_0_rgba(31,38,135,0.37)]">
-                  Join Community
-                </button>
-              </div>
+          <div className="w-full lg:max-w-md">
+            <p className="font-satoshi text-[18px] text-white/70 mb-4 text-center lg:text-left">
+              Join thousands of satisfied traders who have transformed their trading journey with our community
+            </p>
+            <div className="flex justify-center lg:justify-start">
+              <button className="px-6 sm:px-8 py-2 sm:py-3 bg-gradient-to-r from-[#A84BC2] to-[#6C3ECB] rounded-full text-white transition-all hover:from-[#A84BC2]/90 hover:to-[#6C3ECB]/90 backdrop-blur-sm border border-white/10 shadow-[0_4px_12px_0_rgba(31,38,135,0.37)]">
+                Join Community
+              </button>
             </div>
-          </ScrollReveal>
+          </div>
         </div>
 
         {/* Global image */}
-        <ScrollReveal direction="down" delay={0.6}>
-          <div className="relative w-full mb-8 sm:mb-12">
-            <div className="w-full max-w-4xl mx-auto relative">
-              <Image 
-                src="/assets/global2.png"
-                alt="Global Trading"
-                width={1000}
-                height={100}
-                className="w-full h-auto object-contain"
-                priority
-              />
-            </div>
-          </div>
-        </ScrollReveal>
+        <div className="w-full  relative flex justify-center items-center h-[500px]">
+          <Image 
+            src="/assets/global2.png"
+            alt="Global Trading"
+            width={1200}
+            height={600}
+            className="w-full h-auto object-contain"
+            priority
+          />
+        </div>
 
-        {/* Testimonials section */}
-        <div className="relative flex justify-center items-center w-full min-h-[400px] sm:min-h-[450px] -mt-8 sm:-mt-12 lg:-mt-16">
-          {/* Navigation Buttons */}
-          <ScrollReveal direction="left" delay={0.4}>
-            <div className="absolute left-0 sm:left-4 lg:left-8 top-1/2 -translate-y-1/2 z-30">
-              <button
-                onClick={prevTestimonial}
-                className="bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-full p-2 sm:p-3 transition-all duration-300 hover:scale-110"
-              >
-                <IoChevronBack className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
-              </button>
-            </div>
-          </ScrollReveal>
+        {/* Testimonials carousel */}
+        <div className="w-full max-w-7xl mx-auto h-[400px] flex items-center justify-center mt-20" >
+          <div className="relative w-full h-full flex justify-center items-center" style={{ perspective: '1000px' }}>
+            {testimonials.map((t, i) => {
+              let offset = i - centerIndex;
+              if (offset < -half) offset += testimonials.length;
+              if (offset > half) offset -= testimonials.length;
 
-          {/* Testimonial Cards Container */}
-          <ScrollReveal direction="up" delay={0.8}>
-            <div className="relative flex justify-center items-center w-full">
-              {getVisibleTestimonials().map((index, i) => {
-                const isLeft = i === 0;
-                const isCenter = i === 1;
-                const isRight = i === 2;
-                
-                return (
-                  <div 
-                    key={index}
-                    className={`
-                      w-[240px] sm:w-[280px] h-[280px] sm:h-[320px] absolute transition-all duration-300 ease-in-out
-                      ${isCenter ? 'z-20' : 'z-10'}
-                      ${isLeft ? 'transform -translate-x-[60%] sm:-translate-x-80 -translate-y-8 -rotate-12 scale-[0.85] sm:scale-90' : ''}
-                      ${isCenter ? 'transform translate-x-0 translate-y-0 rotate-0 scale-100' : ''}
-                      ${isRight ? 'transform translate-x-[60%] sm:translate-x-80 -translate-y-8 rotate-12 scale-[0.85] sm:scale-90' : ''}
-                    `}
-                    style={{
-                      transformOrigin: isLeft ? 'bottom right' : isRight ? 'bottom left' : 'center'
-                    }}
-                  >
-                    {/* Testimonial Card Content */}
-                    <div className="bg-gradient-to-b from-[#2e0059] to-[#12002a] rounded-3xl p-4 sm:p-6 h-full flex flex-col justify-between backdrop-blur-sm border border-white/5 shadow-[0_8px_32px_0_rgba(31,38,135,0.37)] transition-all duration-300 hover:shadow-[0_8px_32px_0_rgba(31,38,135,0.6)] hover:border-white/20 hover:from-[#3a006e] hover:to-[#1a003d] group">
-                      {/* Profile Section */}
-                      <div className="flex items-center gap-3 sm:gap-4 mb-4">
-                        <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full overflow-hidden ring-2 ring-white/10 group-hover:ring-white/20 transition-all duration-300">
-                          <Image
-                            src={testimonialData[index].image}
-                            alt={testimonialData[index].name}
-                            width={56}
-                            height={56}
-                            className="w-full h-full object-cover"
-                          />
-                        </div>
-                        <div>
-                          <h4 className="text-white font-semibold text-base sm:text-lg group-hover:text-white/90 transition-colors duration-300">
-                            {testimonialData[index].name}
-                          </h4>
-                          <p className="text-gray-400 text-xs sm:text-sm group-hover:text-gray-300 transition-colors duration-300">
-                            {testimonialData[index].profession}
-                          </p>
-                        </div>
-                      </div>
+              if (Math.abs(offset) > half) return null;
 
-                      {/* Testimonial Text */}
-                      <p className="text-gray-300 text-sm sm:text-base mb-4 flex-grow group-hover:text-white/90 transition-colors duration-300">
-                        {testimonialData[index].review}
-                      </p>
+              // Increased spacing to add 20px margin between cards
+              const baseSpacing = 350; 
+              const translateX = offset * baseSpacing;
+              
+              // 3D perspective positioning logic - same size and opacity for all
+              let translateY = 0;
+              let rotateY = 0;
+              let rotateZ = 0;
+              let scale = 1; // Same scale for all cards
+              let opacity = 1; // Same opacity for all cards
+              let translateZ = 0;
 
-                      {/* Rating */}
-                      <div className="flex items-center gap-1">
-                        {[...Array(5)].map((_, i) => (
-                          <FaStar
-                            key={i}
-                            className={`w-4 h-4 sm:w-5 sm:h-5 transition-colors duration-300 ${
-                              i < testimonialData[index].rating
-                                ? 'text-yellow-400 group-hover:text-yellow-300'
-                                : 'text-gray-600 group-hover:text-gray-500'
-                            }`}
-                          />
+              if (offset === 0) {
+                // Center card: perfectly centered, no rotation
+                translateY = 0;
+                rotateY = 0;
+                rotateZ = 0;
+                translateZ = 0;
+              } else if (Math.abs(offset) === 1) {
+                // Near cards: slight perspective but keep them vertically centered
+                translateY = 30;
+                rotateZ = offset * 15;   // Slight Z rotation
+                translateZ = -50;
+              } else if (Math.abs(offset) === 2) {
+                // Edge cards: more pronounced 3D effect but still vertically centered
+                translateY = 110; 
+                rotateZ = offset * 8;
+                translateZ = -100;
+              }
+
+              const zIndex = 100 - Math.abs(offset);
+
+              return (
+                <div
+                  key={t.id}
+                  className={`absolute transition-all duration-700 ease-out m-10`}
+                  style={{
+                    transform: `translateX(${translateX}px) translateY(${translateY}px) translateZ(${translateZ}px) rotateY(${rotateY}deg) rotateZ(${rotateZ}deg) scale(${scale})`,
+                    transformStyle: 'preserve-3d',
+                    
+                    opacity,
+                  }}
+                >
+                  <div className={`w-64 h-72 rounded-2xl p-4 shadow-2xl ${
+                    offset === 0 
+                      ? 'bg-gradient-to-b from-[#2B1F5C] via-[#432B8C] to-[#4B2A84] shadow-2xl border border-purple-500/30 backdrop-blur-sm' 
+                      : 'bg-[#121222] shadow-xl'
+                  } backdrop-blur-sm relative`}>
+                    <FaQuoteRight className="absolute top-3 right-6 text-[#007BFF] text-xl" />
+                    <div className="pt-8">
+                      <p className="text-sm h-32 overflow-hidden mb-2 font-satoshi">{t.text}</p>
+                      <div className="flex text-yellow-400 mb-2">
+                        {Array.from({ length: 5 }).map((_, i) => (
+                          <FaStar key={i} className="text-sm" />
                         ))}
+                      </div>
+                      <div className="border-t border-gray-700 my-2"></div>
+                      <div className="flex items-center gap-3 mt-2">
+                        <Image
+                          src={t.image}
+                          alt={t.name}
+                          width={32}
+                          height={32}
+                          className="rounded-full object-cover"
+                        />
+                        <div>
+                          <p className="text-sm font-riosark font-semibold">{t.name}</p>
+                          <p className="text-xs font-satoshi">{t.role}</p>
+                        </div>
                       </div>
                     </div>
                   </div>
-                );
-              })}
-            </div>
-          </ScrollReveal>
+                </div>
+              );
+            })}
+            
+            {/* Navigation buttons positioned relative to center card */}
+            <button
+              className="absolute z-40 p-3 rounded-full transition-all duration-300 
+              bg-gradient-to-br from-white/10 to-white/5
+              hover:from-purple-600/80 hover:to-purple-700/80
+              backdrop-blur-md
+              shadow-[inset_2px_2px_1px_rgba(255,255,255,0.1),inset_-2px_-2px_1px_rgba(0,0,0,0.2),0_8px_32px_0_rgba(31,38,135,0.37)]
+              border border-white/20"
+              style={{ left: 'calc(50% - 200px)', top: '50%', transform: 'translateY(-50%)' }}
+              onClick={handlePrev}
+            >
+              <HiChevronLeft className="text-white text-2xl" />
+            </button>
 
-          {/* Right Navigation Button */}
-          <ScrollReveal direction="right" delay={0.4}>
-            <div className="absolute right-0 sm:right-4 lg:right-8 top-1/2 -translate-y-1/2 z-30">
-              <button
-                onClick={nextTestimonial}
-                className="bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-full p-2 sm:p-3 transition-all duration-300 hover:scale-110"
-              >
-                <IoChevronForward className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
-              </button>
-            </div>
-          </ScrollReveal>
+            <button
+              className="absolute z-40 p-3 rounded-full transition-all duration-300 
+              bg-gradient-to-br from-white/10 to-white/5
+              hover:from-purple-600/80 hover:to-purple-700/80
+              backdrop-blur-md
+              shadow-[inset_2px_2px_1px_rgba(255,255,255,0.1),inset_-2px_-2px_1px_rgba(0,0,0,0.2),0_8px_32px_0_rgba(31,38,135,0.37)]
+              border border-white/20"
+              style={{ right: 'calc(50% - 200px)', top: '50%', transform: 'translateY(-50%)' }}
+              onClick={handleNext}
+            >
+              <HiChevronRight className="text-white text-2xl" />
+            </button>
+          </div>
+        </div>
+
+        {/* Added Heading and Paragraph Section */}
+        <div className="text-center">
+          <h2 className="text-white text-[72px] font-normal tracking-wide mb-3 sm:mb-4 font-riosark leading-tight">
+            WHAT OUR MEMBERS
+          </h2>
+          <h2 className="text-white text-[72px] font-normal tracking-wide mb-4 sm:mb-6 font-riosark leading-tight">
+            ARE SAYING
+          </h2>
+          <p className="text-gray-300 text-[18px] max-w-2xl mx-auto leading-relaxed px-4 font-satoshi font-normal">
+            Real traders. Real growth. Real results. Here's what members of FX Utopia have to say 
+            about their experience.
+          </p>
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default Testimonials
+export default Testimonials;

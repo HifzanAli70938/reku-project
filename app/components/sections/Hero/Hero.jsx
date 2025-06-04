@@ -3,30 +3,28 @@ import React from 'react';
 import Image from 'next/image';
 import Button from '@/app/components/common/Button';
 import FloatingCard from './FloatingCard';
-import StripeBackground from '@/app/components/common/StripeBackground';
 import ScrollReveal from '@/app/components/common/ScrollReveal';
 
 const Hero = () => {
   return (
-    <section className="bg-[#130D1B] mt-[10vh] min-h-[90vh] relative overflow-hidden" id="hero">
-      <StripeBackground />
-      <div className="relative z-10 h-full flex items-center justify-center px-4 py-16 sm:py-20">
+    <section className="relative w-full bg-gradient-main">
+      <div className="relative z-10 h-full flex items-center justify-center px-4 mt-20 sm:py-20">
         <div className="w-full max-w-5xl mx-auto flex flex-col items-center text-center">
           {/* Text Content */}
           <ScrollReveal direction="down" delay={0.2}>
-            <h2 className="text-[#E2E2E2] text-base sm:text-lg md:text-xl font-medium tracking-[0.2em] uppercase mb-2 sm:mb-3 md:mb-4">
+            <h2 className="text-[#E2E2E2] text-base sm:text-lg md:text-xl font-medium tracking-[0.2em] uppercase mb-2 sm:mb-3 md:mb-4 font-satoshi">
               Welcome to the future of
             </h2>
           </ScrollReveal>
 
           <ScrollReveal direction="up" delay={0.4}>
-            <h1 className="text-[clamp(28px,5vw,56px)] font-bold bg-gradient-to-r from-[#B57BFF] via-[#9747FF] to-[#7B2ABF] bg-clip-text text-transparent leading-tight mb-3 sm:mb-4 md:mb-6 px-4">
+            <h1 className="font-riosark text-[clamp(28px,5vw,56px)] font-normal bg-gradient-to-r from-[#B57BFF] via-[#9747FF] to-[#7B2ABF] bg-clip-text text-transparent leading-tight mb-3 sm:mb-4 md:mb-6 px-4">
               Financial Freedom
             </h1>
           </ScrollReveal>
 
           <ScrollReveal direction="up" delay={0.6}>
-            <p className="text-[#9CA3AF] text-sm sm:text-base md:text-lg max-w-2xl mx-auto mb-6 md:mb-8 leading-relaxed px-4">
+            <p className="font-satoshi text-[#9CA3AF] text-sm sm:text-base md:text-lg max-w-2xl mx-auto mb-6 md:mb-8 leading-relaxed px-4">
               At FX Utopia, we're building the most dynamic and empowering Forex & Crypto community on the planet. Whether you're just getting started or looking to sharpen your edge, our platform delivers everything you need to succeed.
             </p>
           </ScrollReveal>

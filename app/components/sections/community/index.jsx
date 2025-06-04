@@ -1,13 +1,11 @@
 'use client'
 import Image from 'next/image';
 import Button from '../../common/Button';
-import StripeBackground from '../../common/StripeBackground';
 import ScrollReveal from '@/app/components/common/ScrollReveal';
 
 const CommunitySection = () => {
   return (
     <section className="bg-[#130D1B] relative" id="community">
-      <StripeBackground />
       <div className="relative z-10">
         {/* Glass Button */}
         <ScrollReveal direction="down" delay={0.2}>
