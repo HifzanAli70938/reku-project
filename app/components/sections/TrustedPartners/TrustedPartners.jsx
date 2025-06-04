@@ -22,9 +22,9 @@ const TrustedPartners = () => {
       <div className="relative z-10 py-16 sm:py-20">
         <div className="container mx-auto px-4">
           <ScrollReveal direction="down" delay={0.2}>
-            <h2 className="font-riosark text-[72px] font-normal text-white text-center mb-16">
-              Trusted by thousands<br />of forex & crypto<br />hub worldwide
-            </h2>
+          <h2 className="font-riosark  text-2xl sm:text-2xl md:text-3xl lg:text-4xl  font-normal text-white text-center mb-10 sm:mb-12 md:mb-16 leading-tight">
+  Trusted by thousands of forex & crypto hub worldwide
+</h2>
           </ScrollReveal>
 
           <div className="flex items-center justify-center gap-8 md:gap-12 flex-wrap">

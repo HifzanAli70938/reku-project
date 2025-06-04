@@ -39,31 +39,30 @@ const FAQ = () => {
   }
 
   return (
-    <section className="relative w-full bg-gradient-main" id="faq">
-      <div className="absolute inset-0 bg-gradient-overlay"></div>
-      <div className="relative z-10 py-16 sm:py-20">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
+    <section className="relative w-full bg-gradient-to-br from-[#0f0f1e] via-[#1a1a2f] to-[#2a1f47]" id="faq">
+      <div className="relative z-10 py-12 sm:py-16 md:py-20 px-4 sm:px-6">
+        <div className="max-w-[1400px] mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-start">
             {/* Left Section */}
-            <div className="flex flex-col items-start">
+            <div className="flex flex-col items-start p-10">
               <ScrollReveal direction="left" delay={0.2}>
-                <h2 className="font-riosark text-[72px] font-normal text-white mb-4 sm:mb-6 uppercase">
-                  FREQUENTLY<br />ASKED<br />QUESTIONS
+                <h2 className="font-riosark text-2xl sm:text-2xl md:text-3xl lg:text-4xl  font-normal text-white mb-4 sm:mb-6 uppercase leading-tight">
+                  FREQUENTLY ASKED<br />QUESTIONS
                 </h2>
               </ScrollReveal>
               <ScrollReveal direction="left" delay={0.4}>
-                <p className="font-satoshi text-[18px] text-white/70 mb-8 sm:mb-12">
+                <p className="font-satoshi text-[16px] sm:text-[18px] text-white/70 mb-8 sm:mb-12 max-w-xl">
                   We're here to make your journey smooth. Below are some quick answers to the most common questions about FX Utopia
                 </p>
               </ScrollReveal>
               <ScrollReveal direction="up" delay={0.6}>
-                <div className="w-full flex justify-center">
+                <div className="w-full flex justify-center lg:justify-start">
                   <Image
                     src="/assets/logo2d.png"
                     alt="FX Utopia Logo"
                     width={300}
                     height={300}
-                    className="max-w-[200px] sm:max-w-[300px] h-auto"
+                    className="w-[150px] sm:w-[200px] md:w-[250px] h-auto"
                     priority
                   />
                 </div>
@@ -86,7 +85,7 @@ const FAQ = () => {
                           : 'bg-white/[0.08] text-white hover:bg-white/[0.12] shadow-[0_8px_32px_0_rgba(31,38,135,0.37)]'
                       }`}
                     >
-                      <span className="text-left text-[18px] font-normal pr-4">{faq.question}</span>
+                      <span className="text-left text-[14px] sm:text-[16px] md:text-[18px] font-normal pr-4">{faq.question}</span>
                       <FaChevronDown
                         className={`transform transition-transform duration-300 flex-shrink-0 w-4 h-4 sm:w-5 sm:h-5 ${
                           activeIndex === index ? 'rotate-180' : ''
@@ -100,7 +99,7 @@ const FAQ = () => {
                           : 'max-h-0 opacity-0'
                       }`}
                     >
-                      <p className="font-satoshi text-[18px] text-white/70">
+                      <p className="font-satoshi text-[14px] sm:text-[16px] md:text-[18px] text-white/70">
                         {faq.answer}
                       </p>
                     </div>

@@ -98,14 +98,17 @@ const Testimonials = () => {
       <div className="w-full px-4 relative z-10">
         {/* Header content */}
         <div className="flex flex-col lg:flex-row justify-between items-start max-w-[1400px] mx-auto p-16">
-          <h2 className="text-3xl font-riosark text-[72px] sm:text-4xl lg:text-5xl text-white mb-4 lg:mb-0 lg:max-w-2xl">
-            JOIN A GLOBAL TRADING <br/>AND CRYPTO COMMUNITY
-          </h2>
+        <h2 className="font-riosark text-2xl sm:text-2xl md:text-3xl lg:text-4xl  text-white mb-6 lg:mb-0 lg:max-w-2xl leading-tight text-center lg:text-left">
+  JOIN A GLOBAL TRADING <br className="hidden md:block" />
+  AND CRYPTO COMMUNITY
+</h2>
+
           
           <div className="w-full lg:max-w-md">
-            <p className="font-satoshi text-[18px] text-white/70 mb-4 text-center lg:text-left">
-              Join thousands of satisfied traders who have transformed their trading journey with our community
-            </p>
+          <p className="font-satoshi text-base sm:text-lg md:text-xl text-white/70 mb-6 text-center lg:text-left leading-relaxed">
+  Join thousands of satisfied traders who have transformed their trading journey with our community
+</p>
+
             <div className="flex justify-center lg:justify-start">
               <button className="px-6 sm:px-8 py-2 sm:py-3 bg-gradient-to-r from-[#A84BC2] to-[#6C3ECB] rounded-full text-white transition-all hover:from-[#A84BC2]/90 hover:to-[#6C3ECB]/90 backdrop-blur-sm border border-white/10 shadow-[0_4px_12px_0_rgba(31,38,135,0.37)]">
                 Join Community
@@ -243,13 +246,13 @@ const Testimonials = () => {
 
         {/* Added Heading and Paragraph Section */}
         <div className="text-center">
-          <h2 className="text-white text-[72px] font-normal tracking-wide mb-3 sm:mb-4 font-riosark leading-tight">
+          <h2 className="text-white font-normal tracking-wide mb-3 sm:mb-4 font-riosark text-2xl sm:text-2xl md:text-3xl lg:text-4xl  leading-tight">
             WHAT OUR MEMBERS
           </h2>
-          <h2 className="text-white text-[72px] font-normal tracking-wide mb-4 sm:mb-6 font-riosark leading-tight">
+          <h2 className="text-white font-normal tracking-wide text-2xl sm:text-2xl md:text-3xl lg:text-4xl  mb-4 sm:mb-6 font-riosark leading-tight">
             ARE SAYING
           </h2>
-          <p className="text-gray-300 text-[18px] max-w-2xl mx-auto leading-relaxed px-4 font-satoshi font-normal">
+          <p className="text-gray-300  max-w-2xl mx-auto leading-relaxed px-4 font-satoshi font-normal">
             Real traders. Real growth. Real results. Here's what members of FX Utopia have to say 
             about their experience.
           </p>
